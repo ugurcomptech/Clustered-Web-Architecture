@@ -1,6 +1,6 @@
 # HAProxy ve Keepalived Kurulumu ve Yapılandırması
 
-![Untitled](https://github.com/user-attachments/assets/cd50c313-4ccb-455e-ad74-13011e9f16c9)
+![Untitled-removebg-preview](https://github.com/user-attachments/assets/daf9b836-dd02-41a3-9dd7-eccd5b2db768)
 
 Bu belge, HAProxy ve Keepalived'in nasıl kurulacağını ve yapılandırılacağını adım adım açıklar. HAProxy, yük dengelemesi sağlar, Keepalived ise yüksek erişilebilirlik sağlar.
 
