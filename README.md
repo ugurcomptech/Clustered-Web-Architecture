@@ -4,6 +4,8 @@
 
 Bu belge, HAProxy ve Keepalived'in nasıl kurulacağını ve yapılandırılacağını adım adım açıklar. HAProxy, yük dengelemesi sağlar, Keepalived ise yüksek erişilebilirlik sağlar.
 
+http://amigdala.net.tr Web sitesine giriş sağlayarak kontrol edebilirsiniz.
+
 ## 1. HAProxy Kurulumu
 
 ### 1.1. HAProxy'yi Kurun
