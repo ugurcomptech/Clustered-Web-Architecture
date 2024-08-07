@@ -110,7 +110,7 @@ vrrp_instance VI_1 {
 }
 ```
 
-2.3. Keepalived'i Başlatma ve Etkinleştirme
+## 2.3. Keepalived'i Başlatma ve Etkinleştirme
 
 Keepalived'i başlatın ve sistem başlangıcında otomatik olarak başlatılması için etkinleştirin:
 
