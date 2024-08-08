@@ -1,4 +1,5 @@
-# HAProxy ve Keepalived Kurulumu ve Yapılandırması
+# Clustered Web Architecture
+
 
 ![Untitled-removebg-preview](https://github.com/user-attachments/assets/daf9b836-dd02-41a3-9dd7-eccd5b2db768)
 
