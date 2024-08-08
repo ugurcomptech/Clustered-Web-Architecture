@@ -20,7 +20,7 @@ sudo apt install haproxy
 
 ### 1.2. HAProxy Yapılandırması
 
-HAProxy'nin yapılandırma dosyası genellikle /etc/haproxy/haproxy.cfg yolundadır. Aşağıdaki örnek, temel bir HAProxy yapılandırmasını göstermektedir:
+HAProxy'nin yapılandırma dosyası genellikle `/etc/haproxy/haproxy.cfg` yolundadır. Aşağıdaki örnek, temel bir HAProxy yapılandırmasını göstermektedir:
 
 ```
 global
@@ -75,7 +75,7 @@ sudo apt install keepalived
 
 2.2. Keepalived Yapılandırması
 
-Keepalived'in yapılandırma dosyası genellikle /etc/keepalived/keepalived.conf yolundadır. Aşağıdaki örnek, HAProxy ile birlikte çalışacak bir Keepalived yapılandırmasını göstermektedir:
+Keepalived'in yapılandırma dosyası genellikle `/etc/keepalived/keepalived.conf` yolundadır. Aşağıdaki örnek, HAProxy ile birlikte çalışacak bir Keepalived yapılandırmasını göstermektedir:
 
 Primary HAProxy Sunucusu İçin:
 
