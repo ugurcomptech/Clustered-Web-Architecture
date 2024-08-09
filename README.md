@@ -135,12 +135,79 @@ sudo systemctl status keepalived
 ```
 
 
+
+
+
+
+
 ## 4. Ekstra Notlar
 
 1. DNS ayarlarınızı, HAProxy'nin  IP adresine yönlendirdiğinizden emin olun.
 2. Keepalived yapılandırmalarında priority değerleri, master ve yedek sunucular arasındaki önceliği belirler.
 3. Keepalived ve HAProxy'yi doğru yapılandırdığınızdan ve sistemlerin doğru çalıştığından emin olmak için testler yapın.
 
+
+## 5. HaProxy Üzerinde SSL Kurulumu
+
+SSL (Secure Sockets Layer), internet üzerindeki veri iletimini şifreleyen bir güvenlik protokolüdür. Bu, kullanıcıların web siteleri aracılığıyla bilgi gönderirken, üçüncü şahısların bu bilgilere erişmesini zorlaştırarak güvenli bir iletişim sağlar. Şimdi serverımıza SSL kuracağız. Aşağıdaki komutu yazarak gerekli indirmeleri yapalım.
+
+```
+sudo apt install certbot python3-certbot-apache
+```
+
+SSL sertfika kurulumunu gerçekleştirmek için HaProxy servisini durdurmanız gerekmektedir. 
+
+```
+systemctl stop haproxy.service
+```
+
+Terminale aşağıdaki gibi yazıyoruz
+
+```
+sudo certbot certonly --standalone -d domain.com--non-interactive --agree-tos --email user@domain.com
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+Requesting a certificate for domain.com
+
+Successfully received certificate.
+Certificate is saved at: /etc/letsencrypt/live/domain.com/fullchain.pem
+Key is saved at:         /etc/letsencrypt/live/domain.com/privkey.pem
+This certificate expires on 2024-11-07.
+These files will be updated when the certificate renews.
+Certbot has set up a scheduled task to automatically renew this certificate in the background.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+If you like Certbot, please consider supporting our work by:
+ * Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+ * Donating to EFF:                    https://eff.org/donate-le
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+```
+
+HAProxy, SSL sertifikalarını ve özel anahtarları aynı dosyada ister. Bu yüzden fullchain.pem ve privkey.pem dosyalarını birleştirmelisin.
+
+```
+cat /etc/letsencrypt/live/domain.com/fullchain.pem /etc/letsencrypt/live/domain.com/privkey.pem > /etc/letsencrypt/live/domain.com/haproxy.pem
+```
+
+HAProxy'yi SSL trafiği için yapılandırmak üzere /etc/haproxy/haproxy.cfg dosyasını güncelle. Aşağıdaki örnek konfigürasyonu kullanabilirsin:
+
+```
+frontend https_front
+    bind *:443 ssl crt /etc/letsencrypt/live/domain.com/haproxy.pem
+    mode http
+    option httplog
+    default_backend http_back
+```
+
+Bu konfigürasyon, gelen HTTPS isteklerini 443 portu üzerinden alır ve onları belirtilen backend sunucularına yönlendirir.
+
+
+Yaptığın değişikliklerin etkili olması için HAProxy'yi yeniden başlat:
+
+```
+sudo systemctl restart haproxy
+```
+
+Web sitenize giderek test edebilirsiniz.
 
 ----------------------------------------------------------------
 HAProxy ve Keepalived kurulum ve yapılandırma adımlarını kapsamlı bir şekilde açıklar. Her adımın doğru uygulandığından emin olun ve yapılandırmalarınızı test edin.
