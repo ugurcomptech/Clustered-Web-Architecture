@@ -5,7 +5,7 @@
 
 Bu sistemde, iki tane HAProxy sunucusunu kullanarak yüksek erişilebilirlik sağlayan bir yapı kuruyoruz. İstemci istekleri önce bu HAProxy sunucularına yönlendirilir. Bu sunucular, istekleri arka plandaki web sunucularına yönlendirmekle sorumlu olur. Eğer birinci HAProxy sunucusu çalışmazsa, diğeri devreye girer. HAProxy sunucuları, sağlık kontrolü yaparak arka plandaki sunucuların erişilebilir olduğunu doğrular. Web sunucularının SSL sertifikaları HAProxy üzerinden yönetilir; bu da, SSL sertifikalarının doğru şekilde yapılandırıldığından ve geçerli olduğundan emin olunmasını sağlar. Ayrıca, HAProxy sunucuları için Keepalived kullanarak sanal bir IP (VIP) yapılandırılır ve bu VIP, dışarıdan erişim için kullanılır. Eğer bir HAProxy sunucusu kapalı olursa, Keepalived başka bir sunucuyu etkinleştirir ve bu sayede kesintisiz hizmet sağlanır. Bu yapı, yüksek erişilebilirlik ve kesintisiz hizmet için esnek ve güvenilir bir çözüm sunar.
 
-http://amigdala.net.tr Web sitesine giriş sağlayarak kontrol edebilirsiniz.
+https://amigdala.net.tr Web sitesine giriş sağlayarak kontrol edebilirsiniz.
 
 ## 1. HAProxy Kurulumu
 
