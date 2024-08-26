@@ -46,7 +46,7 @@ frontend http_front
     bind *:80
     default_backend http_back
 
-backend http_back,
+backend http_back
     mode 80
     balance roundrobin
     server webserver1 192.168.1.10:80 check
